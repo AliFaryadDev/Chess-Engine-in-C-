@@ -14,6 +14,7 @@ int main() {
         {"♖", "♘", "♗", "♕", "♔", "♗", "♘", "♖"}
     };
 
+    //Heading
     cout << "\n\n\n\t\tThe Terminal Chess Game" << endl << endl;
 
     // Row 0
