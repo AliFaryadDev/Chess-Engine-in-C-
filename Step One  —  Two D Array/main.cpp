@@ -16,7 +16,9 @@ int main() {
 
     //Heading
     cout << "\n\n\n\t\tThe Terminal Chess Game" << endl << endl;
-
+  
+    //Printing
+ 
     // Row 0
     cout << "\t" << chessBoard[0][0] << "\t";
     cout << chessBoard[0][1] << "\t";
