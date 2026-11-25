@@ -2,6 +2,8 @@
 using namespace std;
 
 int main() {
+    string from;
+    string to;
     string move;
     string chessBoard[8][8] = {
       //2 D Array
