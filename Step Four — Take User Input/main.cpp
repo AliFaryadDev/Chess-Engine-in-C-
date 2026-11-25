@@ -2,8 +2,6 @@
 using namespace std;
 
 int main() {
-    string from;
-    string to;
     string move;
     string chessBoard[8][8] = {
       //2 D Array
@@ -41,12 +39,7 @@ cout << "\n\n\n\t\tThe Terminal Chess Game" << endl << endl;
     //Ask a Player to enter your move
     cout<<"\t"<<endl<<endl<<"Enter your move: ";
     cin>>move;
-    //String Parsing
-     from = move.substr(0, 2);
-     to = move.substr(2, 2);
-
-    cout << "From: " << from << endl;
-    cout << "To: " << to << endl;
+    cout<<"Your move is: "<<move;
 
     return 0;
 }
