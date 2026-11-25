@@ -75,6 +75,7 @@ Therefore:
 
 4. C++ Code
 
+```cpp 
 #include <iostream>
 #include <string>
 using namespace std;
