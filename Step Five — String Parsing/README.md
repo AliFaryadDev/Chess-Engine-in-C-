@@ -5,15 +5,15 @@
 **Step:** 05  
 **Language:** C++
 
-## 📄 Table of Contents
+## Table of Contents
 
 - [1. Introduction](#1-introduction)
-- [2. What is String Parsing?](#2-what-is-string-parsing)
+- [2. String Parsing](#2-string-parsing)
 - [3. Understanding the Input](#3-understanding-the-input)
-- [4. C++ Code](#4-c-code)
+- [4. C++ Implementation](#4-c-implementation)
 - [5. Code Explanation](#5-code-explanation)
 - [6. Understanding `substr()`](#6-understanding-substr)
-- [7. How Parsing Works](#7-how-parsing-works)
+- [7. Parsing Process](#7-parsing-process)
 - [8. Program Flowchart](#8-program-flowchart)
 - [9. Output](#9-output)
 - [10. Conclusion](#10-conclusion)
@@ -22,78 +22,64 @@
 
 ## 1. Introduction
 
-In our Terminal-Based Chess Game, the player enters a chess move as a single string.
+In this step, we will process the chess move entered by the player.
 
-For example:
+The player enters a move in the following format:
 
-```cpp
+```text
 e2e4
 ```
 
-This input contains two different pieces of information:
+The input represents two positions:
 
-- `e2` = Source Position (Starting Square)
-- `e4` = Destination Position (Target Square)
+- `e2`: The square from which the piece moves.
+- `e4`: The square to which the piece moves.
 
-Our program needs to separate these two positions so that they can be processed individually.
+To work with these positions separately, we need to extract them from the input string. This is done using string parsing.
 
-For this purpose, we use **String Parsing**.
+## 2. String Parsing
 
-## 2. What is String Parsing?
+String parsing involves examining a string and extracting specific parts of it based on a defined structure.
 
-String Parsing is the process of analyzing a string and extracting smaller meaningful parts from it.
-
-For example:
-
-```cpp
-string move = "e2e4";
-```
-
-We can divide this string into two meaningful parts:
+In our chess game, each move consists of four characters:
 
 ```text
-Original String: e2e4
-
-       e2       e4
-        |        |
-     Source  Destination
+e2e4
 ```
 
-After parsing:
+We divide these characters into two parts:
 
-```cpp
-from = "e2";
-to   = "e4";
+```text
+e2 | e4
 ```
 
-This allows our program to extract and work with individual pieces of information from a single string.
+- `e2` represents the source position.
+- `e4` represents the destination position.
+
+Both positions can then be stored in separate string variables.
 
 ## 3. Understanding the Input
 
-Consider the following string:
+Before extracting the positions, let's look at how the input string is organized.
 
 ```cpp
 string move = "e2e4";
 ```
 
-A string stores characters in a sequence. Each character has a specific index.
+Each character in a string has an index, starting from `0`.
 
 | Character | e | 2 | e | 4 |
 |-----------|---|---|---|---|
-| Index     | 0 | 1 | 2 | 3 |
+| Index | 0 | 1 | 2 | 3 |
 
-**Important:** String indexing in C++ starts from `0`, not `1`.
+Based on these indexes:
 
-Therefore:
+- Index `0` and `1` contain the source position.
+- Index `2` and `3` contain the destination position.
 
-- Index `0` contains `e`.
-- Index `1` contains `2`.
-- Index `2` contains `e`.
-- Index `3` contains `4`.
+We can use these indexes with the `substr()` function to extract both positions.
 
-We can use these indexes to extract the source and destination positions.
-
-## 4. C++ Code
+## 4. C++ Implementation
 
 ```cpp
 #include <iostream>
@@ -126,8 +112,8 @@ int main() {
 #include <string>
 ```
 
-- `iostream`: Allows us to take input and display output.
-- `string`: Allows us to use the C++ string class and its functions.
+- `iostream` provides input and output functionality.
+- `string` provides the string class and its associated functions.
 
 ### 2. Namespace
 
@@ -135,7 +121,7 @@ int main() {
 using namespace std;
 ```
 
-Allows us to use standard C++ objects and functions without repeatedly writing `std::`.
+Allows us to access standard library components without prefixing them with `std::`.
 
 ### 3. Main Function
 
@@ -143,15 +129,15 @@ Allows us to use standard C++ objects and functions without repeatedly writing `
 int main() {
 ```
 
-The execution of our program starts from the `main()` function.
+The `main()` function is the entry point of the program. Execution begins here.
 
-### 4. String Declaration
+### 4. Declaring the String
 
 ```cpp
 string move;
 ```
 
-We declare a string variable named `move` to store the chess move entered by the player.
+Declares a string variable named `move` to store the player's input.
 
 ### 5. Taking Input
 
@@ -160,58 +146,58 @@ cout << "Enter your move: ";
 cin >> move;
 ```
 
-- `cout` displays a message on the screen.
-- `cin` takes input from the player.
-- The entered move is stored in the `move` variable.
+Displays a prompt and reads the move entered by the player.
 
-**Example Input:**
+For example:
 
 ```text
 e2e4
 ```
 
-### 6. Extracting Source Position
+The entered value is stored in `move`.
+
+### 6. Extracting the Source Position
 
 ```cpp
 string from = move.substr(0, 2);
 ```
 
-We use the `substr()` function to extract the first two characters from the original string.
+Extracts two characters starting from index `0`.
 
-- `0` = Starting index.
-- `2` = Number of characters to extract.
+- Starting index: `0`
+- Length: `2`
 
-**Result:**
+The extracted value is:
 
 ```cpp
 from = "e2";
 ```
 
-### 7. Extracting Destination Position
+### 7. Extracting the Destination Position
 
 ```cpp
 string to = move.substr(2, 2);
 ```
 
-We use `substr()` again to extract the next two characters.
+Extracts two characters starting from index `2`.
 
-- `2` = Starting index.
-- `2` = Number of characters to extract.
+- Starting index: `2`
+- Length: `2`
 
-**Result:**
+The extracted value is:
 
 ```cpp
 to = "e4";
 ```
 
-### 8. Displaying Results
+### 8. Displaying the Positions
 
 ```cpp
 cout << "From: " << from << endl;
 cout << "To: " << to << endl;
 ```
 
-Displays the extracted source and destination positions.
+Displays both extracted positions separately.
 
 ### 9. Return Statement
 
@@ -219,11 +205,11 @@ Displays the extracted source and destination positions.
 return 0;
 ```
 
-Indicates that the program has finished successfully.
+Terminates the program and indicates successful execution.
 
 ## 6. Understanding `substr()`
 
-`substr()` is a built-in C++ string function used to extract a substring from an existing string.
+The `substr()` function is a member function of the C++ `string` class. It returns a new string containing a specified portion of the original string.
 
 **Syntax:**
 
@@ -231,10 +217,10 @@ Indicates that the program has finished successfully.
 string.substr(starting_index, length);
 ```
 
-| Parameter | Meaning |
-|-----------|---------|
-| `starting_index` | The index where extraction begins |
-| `length` | The number of characters to extract |
+| Parameter | Description |
+|-----------|-------------|
+| `starting_index` | Index from which extraction begins |
+| `length` | Number of characters to extract |
 
 ### Example
 
@@ -254,91 +240,74 @@ ELL
 
 **Explanation:**
 
-- Starting Index = `1`
-- Length = `3`
-- Extracted Characters = `ELL`
+- Starting index: `1`
+- Length: `3`
+- Extracted substring: `ELL`
 
-**Important Note:** The second parameter represents the number of characters to extract, not the ending index.
+The `length` parameter specifies how many characters to extract, not the ending index.
 
-## 7. How Parsing Works
+## 7. Parsing Process
 
-Let's understand the complete execution step by step.
+Let's follow the execution using the input `e2e4`.
 
-### Step 1: Input
-
-The player enters:
+**Step 1: Receive the input**
 
 ```text
 e2e4
 ```
 
-### Step 2: Store Input
+**Step 2: Store the input**
 
 ```cpp
 string move = "e2e4";
 ```
 
-The complete input is stored in the `move` variable.
-
-### Step 3: Extract Source Position
+**Step 3: Extract the source position**
 
 ```cpp
 string from = move.substr(0, 2);
 ```
 
-The program starts at index `0` and extracts two characters.
+Result: `e2`
 
-**Result:**
-
-```text
-e2
-```
-
-### Step 4: Extract Destination Position
+**Step 4: Extract the destination position**
 
 ```cpp
 string to = move.substr(2, 2);
 ```
 
-The program starts at index `2` and extracts two characters.
+Result: `e4`
 
-**Result:**
-
-```text
-e4
-```
-
-### Step 5: Final Result
+**Step 5: Store both positions**
 
 ```text
-Original String: e2e4
-
-Source Position: e2
-Destination Position: e4
+from = e2
+to   = e4
 ```
+
+The original input has now been separated into two strings.
 
 ## 8. Program Flowchart
-
-The following flowchart illustrates how our program takes input, parses the string, extracts both positions, and displays the results.
 
 ```mermaid
 flowchart TD
     A([Start]) --> B[/Enter Chess Move/]
     B --> C[Store Input in move]
-    C --> D["Extract Source Position<br/>move.substr(0, 2)"]
-    D --> E["Extract Destination Position<br/>move.substr(2, 2)"]
-    E --> F[Display Source Position]
-    F --> G[Display Destination Position]
+    C --> D["Extract Source: substr(0, 2)"]
+    D --> E["Extract Destination: substr(2, 2)"]
+    E --> F[/Display Source Position/]
+    F --> G[/Display Destination Position/]
     G --> H([End])
 
-    style A fill:#d1fae5,stroke:#059669,color:#065f46
-    style H fill:#d1fae5,stroke:#059669,color:#065f46
-    style B fill:#dbeafe,stroke:#2563eb,color:#1e40af
-    style C fill:#fef3c7,stroke:#d97706,color:#78350f
-    style D fill:#ede9fe,stroke:#7c3aed,color:#4c1d95
-    style E fill:#ede9fe,stroke:#7c3aed,color:#4c1d95
-    style F fill:#cffafe,stroke:#0891b2,color:#164e63
-    style G fill:#cffafe,stroke:#0891b2,color:#164e63
+    classDef startEnd fill:#DCEFE8,stroke:#43866D,color:#244F40,stroke-width:1.5px
+    classDef input fill:#DCEAF7,stroke:#5683AA,color:#23445F,stroke-width:1.5px
+    classDef process fill:#E9EAED,stroke:#858B96,color:#343943,stroke-width:1.5px
+    classDef output fill:#DDECEF,stroke:#568D96,color:#244C53,stroke-width:1.5px
+
+    class A,H startEnd
+    class B input
+    class C,D,E process
+    class F,G output
 ```
 
 ## 9. Output
@@ -358,15 +327,12 @@ To: e4
 
 ## 10. Conclusion
 
-In this step, we learned how to perform String Parsing in C++.
+In this step, we used string parsing to separate a chess move into its source and destination positions.
 
-We took a single string containing a chess move and extracted two meaningful parts using the `substr()` function.
+The `substr()` function allowed us to extract the required characters using their indexes.
 
-- `e2` represents the source position.
-- `e4` represents the destination position.
-
-**Key Learning:** String Parsing helps us extract meaningful information from a single string so that our program can process each part separately.
+We can now use the `from` and `to` variables separately when implementing the move-processing logic of our chess game.
 
 ---
 
-**Next Step:** Use the extracted source and destination positions to process the player's chess move.
+**Next Step:** Use the extracted positions to process a chess move.
