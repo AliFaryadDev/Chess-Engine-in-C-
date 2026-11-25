@@ -41,5 +41,11 @@ cout << "\n\n\n\t\tThe Terminal Chess Game" << endl << endl;
     cin>>move;
     cout<<"Your move is: "<<move;
 
+    string from = move.substr(0, 2);
+    string to = move.substr(2, 2);
+
+    cout << "From: " << from << endl;
+    cout << "To: " << to << endl;
+
     return 0;
 }
