@@ -42,7 +42,7 @@ cout << "\n\n\n\t\tThe Terminal Chess Game" << endl << endl;
     cout<<"\t"<<endl<<endl<<"Enter your move: ";
     cin>>move;
     cout<<"Your move is: "<<move;
-
+    //String Parsing
      from = move.substr(0, 2);
      to = move.substr(2, 2);
 
